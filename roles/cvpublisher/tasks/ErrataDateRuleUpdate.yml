@@ -1,0 +1,20 @@
+---
+# This playbook implements the task of updating the rule for a content view
+# and publishing the content view to Library
+
+- name: Get the Content View Rule ID for the Content View
+  command: "hammer --output=json content-view filter rule list --content-view-filter={{ content_view_filter }} --content-view={{ item }} --organization={{ organization }}"
+  register: cmdOutput
+
+- name: converting the output
+  set_fact: output={{ cmdOutput.stdout }}
+
+- name: 
+  set_fact: cvf_rule_id={{ output|json_query('[0]."Rule ID"') }}
+
+- name: Set the new EndDate for the errata window
+  command: "hammer --output=json content-view filter rule update --id={{ cvf_rule_id }} --end-date={{ end_date }} --content-view-filter={{ content_view_filter }} --content-view={{ item }} --organization={{ organization }}"
+  register: cmdOutput
+
+- debug: 
+    msg: "{{ cmdOutput.stdout }}"

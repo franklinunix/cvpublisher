@@ -1,0 +1,9 @@
+
+
+- name: "Publish each of the content views"
+  command: "hammer --output=json content-view  publish --async --name={{ item }} --organization={{ organization }} --description={{ description }}"
+  loop: "{{ content_views }}"
+
+- name: "Publish each of the composite_content views"
+  command: "hammer --output=json content-view  publish --async --name={{ item }} --organization={{ organization }} --description={{ description }}"
+  loop: "{{ composite_content_views }}"

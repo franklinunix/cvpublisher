@@ -1,0 +1,23 @@
+---
+# This playbook implements the task of updating each content view and composite content view
+
+- name: "Update the filters for content_view and publish them"
+  include_tasks: ErrataDateRuleUpdate.yml
+  loop: "{{ content_views }}"
+
+- name: "Publish the our Base SOE and wait for completion"
+  command: "hammer --output=json content-view  publish --name={{ base_soe }} --organization={{ organization }}"
+
+- name: "Publish remaining content views"
+  command: "hammer --output=json content-view  publish --async --name={{ item }} --organization={{ organization }}"
+  loop: "{{ content_views }}"
+
+
+- name: "Publish composite_content views"
+  command: "hammer --output=json content-view  publish --async --name={{ item }} --organization={{ organization }}"
+  loop: "{{ composite_content_views }}"
+
+
+
+
+
