@@ -4,7 +4,7 @@
 ### Promotion to development will managed separately
 
 - name: Starting publishing of this months content views
-  gather_facts: false
+  gather_facts: True 
   remote_user: root
   hosts: sat6.parmstrong.ca
   
