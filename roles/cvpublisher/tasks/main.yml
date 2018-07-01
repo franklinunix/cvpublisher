@@ -5,19 +5,16 @@
   include_tasks: ErrataDateRuleUpdate.yml
   loop: "{{ content_views }}"
 
-- name: "Publish the our Base SOE and wait for completion"
-  command: "hammer --output=json content-view  publish --name={{ base_soe }} --organization={{ organization }}"
+- name: "Publish the our Base SOEs and wait for completion"
+  command: "hammer --output=json content-view  publish --name={{ item }} --organization={{ organization }}"
+  loop: "{{ base_soes }}"
 
 - name: "Publish remaining content views"
   command: "hammer --output=json content-view  publish --async --name={{ item }} --organization={{ organization }}"
   loop: "{{ content_views }}"
 
-
 - name: "Publish composite_content views"
   command: "hammer --output=json content-view  publish --async --name={{ item }} --organization={{ organization }}"
   loop: "{{ composite_content_views }}"
-
-
-
 
 

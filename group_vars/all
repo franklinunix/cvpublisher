@@ -2,7 +2,8 @@ organization: "RedHatCanada"
 description: "Published for the 1st of July"
 content_view_filter: "IncludeErrataByDate"
 end_date: "2018-07-01"
-base_soe: "SOE_RHEL"
+base_soes: 
+  - "SOE_RHEL"
 content_views: 
   - "OCP3x"
   - "RHS_Gluster"
