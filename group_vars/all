@@ -1,7 +1,7 @@
 organization: "RedHatCanada"
 description: "Published for the 1st of July"
 content_view_filter: "IncludeErrataByDate"
-end_date: "2018-07-01"
+end_date: "{{ ansible_date_time.date }}"
 base_soes: 
   - "SOE_RHEL"
 content_views: 
