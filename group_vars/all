@@ -7,5 +7,48 @@ base_soes:
     environments: 
     - "Development"
 content_views: 
+  - name: "OCP3x"
+    environments: 
+    - "Development"
+  - name: "RHS_Gluster"
+    environments: 
+    - "Development"
+  - name: "RHVH"
+    environments: 
+    - "Development"
+  - name: "RHVM"
+    environments: 
+    - "Development"
+    - "QA"
+  - name: "SatelliteCapsule"
+    environments: 
+    - "Development"
+    - "QA"
+    - "Production"
 composite_content_views: 
+  - name: "SOE_Apache"
+    environments: 
+    - "Development"
+  - name: "SOE_CPGPC"
+    environments: 
+    - "Development"
+    - "QA"
+  - name: "SOE_CPGPC_OCP"
+    environments: 
+    - "Development"
+  - name: "SOE_Gluster"
+    environments: 
+    - "Development"
+  - name: "SOE_mail"
+    environments: 
+    - "Development"
+  - name: "SOE_MariaMySQL"
+    environments: 
+    - "Development"
+  - name: "SOE_RHVM"
+    environments: 
+    - "Development"
+  - name: "SOE_Tomcat"
+    environments: 
+    - "Development"
 
