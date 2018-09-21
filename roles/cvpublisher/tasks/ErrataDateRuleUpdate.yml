@@ -7,7 +7,7 @@
   register: cmdOutput
 
 - name: Pull the RuleID
-  set_fact: cvf_rule_id={{ cmdOutput | from_json | json_query('[0]."Rule ID"') }}
+  set_fact: cvf_rule_id={{ cmdOutput.stdout | from_json | json_query('[0]."Rule ID"') }}
 
 - name: Get the new EndDate
   set_fact: end_date={{ ansible_date_time.date }}
