@@ -3,7 +3,7 @@
 # and publishing the content view to Library
 
 - name: Get the Content View Rule ID for the Content View
-  command: "hammer --output=json content-view filter rule list --content-view-filter={{ content_view_filter }} --content-view={{ item }} --organization={{ organization }}"
+  command: "hammer --output=json content-view filter rule list --content-view-filter={{ content_view_filter }} --content-view={{ item.name }} --organization={{ organization }}"
   register: cmdOutput
 
 - name: Pull the RuleID
@@ -16,7 +16,7 @@
     msg: "Setting new date to {{ end_date }}" 
 
 - name: Set the new EndDate for the errata window
-  command: "hammer --output=json content-view filter rule update --id={{ cvf_rule_id }} --end-date={{ end_date }} --content-view-filter={{ content_view_filter }} --content-view={{ item }} --organization={{ organization }}"
+  command: "hammer --output=json content-view filter rule update --id={{ cvf_rule_id }} --end-date={{ end_date }} --content-view-filter={{ content_view_filter }} --content-view={{ item.name }} --organization={{ organization }}"
   register: cmdOutput
 
 - debug: 
