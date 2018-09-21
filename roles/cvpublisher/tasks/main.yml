@@ -6,15 +6,15 @@
   loop: "{{ content_views }}"
 
 - name: "Publish the our Base SOEs and wait for completion"
-  command: "hammer --output=json content-view  publish --name={{ item }} --organization={{ organization }}"
+  command: "hammer --output=json content-view  publish --name={{ item.name }} --organization={{ organization }}"
   loop: "{{ base_soes }}"
 
 - name: "Publish remaining content views"
-  command: "hammer --output=json content-view  publish --async --name={{ item }} --organization={{ organization }}"
+  command: "hammer --output=json content-view  publish --async --name={{ item.name }} --organization={{ organization }}"
   loop: "{{ content_views }}"
 
 - name: "Publish composite_content views"
-  command: "hammer --output=json content-view  publish --async --name={{ item }} --organization={{ organization }}"
+  command: "hammer --output=json content-view  publish --async --name={{ item.name }} --organization={{ organization }}"
   loop: "{{ composite_content_views }}"
 
 
