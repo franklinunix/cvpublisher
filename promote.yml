@@ -1,0 +1,12 @@
+---
+### The plays in this set will perform the monthly publishing of errata for content views
+### This will automatically publish new versions to the Library. 
+### Promotion to development will managed separately
+
+- name: Starting publishing of this months content views
+  gather_facts: True 
+  remote_user: root
+  hosts: sat6.parmstrong.ca
+  
+  roles:
+  - cvpromoter

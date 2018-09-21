@@ -1,0 +1,19 @@
+---
+# This playbook implements the task of updating each content view and composite content view
+#
+# - name: "Publish composite_content views"
+#   command: "hammer --output=json content-view  publish --async --name={{ item }} --organization={{ organization }}"
+#   loop: "{{ composite_content_views }}"
+#
+- name: "Promote Base SOE CVs to defined lifecycle environment"
+  include_tasks: PromoteCV.yml
+  loop: "{{ base_soes }}"
+
+- name: "Promote Core CVs to defined lifecycle environment"
+  include_tasks: PromoteCV.yml
+  loop: "{{ content_views }}"
+
+- name: "Promote Composite CVs to defined lifecycle environment"
+  include_tasks: PromoteCV.yml
+  loop: "{{ composite_content_views }}"
+

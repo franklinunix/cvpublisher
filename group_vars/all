@@ -3,19 +3,52 @@ description: "Published for the 1st of July"
 content_view_filter: "IncludeErrataByDate"
 end_date: "{{ ansible_date_time.date }}"
 base_soes: 
-  - "SOE_RHEL"
+  - name: "SOE_RHEL"
+    environments: 
+    - "Development"
 content_views: 
-  - "OCP3x"
-  - "RHS_Gluster"
-  - "RHVH"
-  - "RHVM"
-  - "SatelliteCapsule"
+  - name: "OCP3x"
+    environments: 
+    - "Development"
+  - name: "RHS_Gluster"
+    environments: 
+    - "Development"
+  - name: "RHVH"
+    environments: 
+    - "Development"
+  - name: "RHVM"
+    environments: 
+    - "Development"
+    - "QA"
+  - name: "SatelliteCapsule"
+    environments: 
+    - "Development"
+    - "QA"
+    - "Production"
 composite_content_views: 
-  - "SOE_Apache"
-  - "SOE_CPGPC"
-  - "SOE_CPGPC_OCP"
-  - "SOE_Gluster"
-  - "SOE_mail"
-  - "SOE_MariaMySQL"
-  - "SOE_RHVM"
-  - "SOE_Tomcat"
+  - name: "SOE_Apache"
+    environments: 
+    - "Development"
+  - name: "SOE_CPGPC"
+    environments: 
+    - "Development"
+    - "QA"
+  - name: "SOE_CPGPC_OCP"
+    environments: 
+    - "Development"
+  - name: "SOE_Gluster"
+    environments: 
+    - "Development"
+  - name: "SOE_mail"
+    environments: 
+    - "Development"
+  - name: "SOE_MariaMySQL"
+    environments: 
+    - "Development"
+  - name: "SOE_RHVM"
+    environments: 
+    - "Development"
+  - name: "SOE_Tomcat"
+    environments: 
+    - "Development"
+

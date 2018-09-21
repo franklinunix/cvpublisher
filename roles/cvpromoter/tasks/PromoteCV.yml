@@ -1,0 +1,21 @@
+---
+
+# This play accepts the defined variables for content views and composite content views
+# and promotes them to the specified life cycle environment.
+# hammer content-view version promote --organization RedHatCanada --content-view SOE_RHEL --from-lifecycle-environment "Development" --to-lifecycle-environment "QA"
+#
+#
+
+# - name: Promoting content view: {{ item.name }}
+#  command: "hammer content-view version promote --organization {{ organization }}  --content-view {{ item }} --from-lifecycle-environment {{ item.paths --to-lifecycle-environment Develoment"
+- name: Testing input
+  debug:
+    msg: "The item is {{ item.name }}"
+
+- debug:
+    msg: "The item environments are: {{ item.environments }}"
+
+- name: Promoting content view: {{ item.name }}
+  command: "hammer content-view version promote --organization {{ organization }}  --content-view {{ item.name }} --from-lifecycle-environment Library --to-lifecycle-environment {{item.environments.[0]"
+
+

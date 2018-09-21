@@ -6,8 +6,14 @@
   command: "hammer --output=json content-view filter rule list --content-view-filter={{ content_view_filter }} --content-view={{ item }} --organization={{ organization }}"
   register: cmdOutput
 
-- name: 
+- name: Pull the RuleID
   set_fact: cvf_rule_id={{ cmdOutput | from_json | json_query('[0]."Rule ID"') }}
+
+- name: Get the new EndDate
+  set_fact: end_date={{ ansible_date_time.date }}
+
+- debug:
+    msg: "Setting new date to {{ end_date }}" 
 
 - name: Set the new EndDate for the errata window
   command: "hammer --output=json content-view filter rule update --id={{ cvf_rule_id }} --end-date={{ end_date }} --content-view-filter={{ content_view_filter }} --content-view={{ item }} --organization={{ organization }}"
