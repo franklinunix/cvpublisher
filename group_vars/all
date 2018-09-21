@@ -6,4 +6,6 @@ base_soes:
   - name: "SOE_RHEL"
     environments: 
     - "Development"
+content_views: 
+composite_content_views: 
 
