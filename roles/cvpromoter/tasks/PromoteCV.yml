@@ -6,6 +6,6 @@
 #
 #
 
-- name: Promoting content view: {{ item.name }}
+- name: "Promoting content view {{ item.name }}"
   command: "hammer content-view version promote --organization {{ organization }}  --content-view {{ item.name }} --from-lifecycle-environment {{ source_le }} --to-lifecycle-environment {{ dest_le }}"
 
