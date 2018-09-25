@@ -1,0 +1,27 @@
+---
+# This play coordinates the cleanup of Content View images in Satellite.
+# The order has to be the reverse of the creation - CCVs, CVs, BaseOSs
+# The user will specify the number of content views 
+# remaining that are NOT IN USE in a lifecycle environment
+#
+
+
+- name: Cleanup Composite Content Views
+  include_tasks: RemoveContentView.yml
+  loop: "{{ composite_content_views }}"
+  loop_control:
+    loop_var: cv
+
+- name: Cleanup Content Views
+  include_tasks: RemoveContentView.yml
+  loop: "{{ content_views }}"
+  loop_control:
+    loop_var: cv
+
+- name: Cleanup BaseOSs
+  include_tasks: RemoveContentView.yml
+  loop: "{{ base_soes }}"
+  loop_control:
+    loop_var: cv
+
+

@@ -2,6 +2,7 @@ organization: "RedHatCanada"
 description: "Published for the 1st of July"
 content_view_filter: "IncludeErrataByDate"
 end_date: "{{ ansible_date_time.date }}"
+num_cvs_to_keep: 3
 base_soes: 
   - name: "SOE_RHEL"
     environments: 

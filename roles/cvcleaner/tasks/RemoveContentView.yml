@@ -1,0 +1,32 @@
+---
+# This play gets called to loop over the Content Views and remove them.
+# The type of view is managed by the main.yml controller play
+# hammer --output json content-view version list --content-view SOE_CPGPC_OCP --organization=RedHatCanada
+# hammer content-view version delete --id 455 --content-view SOE_CPGPC --organization RedHatCanada
+#
+
+- name: Get the list of content view versions not in environments
+  command: "hammer --output json content-view version list --content-view {{ cv.name }} --organization {{ organization }}"
+  register: cmdOutput
+
+- debug:
+    msg: "{{ cmdOutput.stdout }}"
+
+- set_fact: cvlist={{ cmdOutput.stdout | from_json | json_query(query) }}
+  vars:
+    query: '{ data: [*].{ID:ID, count:length("Lifecycle Environments")}}'
+
+- debug:
+    msg: "{{ cvlist }}"
+
+- set_fact: cvs_to_delete={{ cvlist | json_query(query) }}
+  vars:
+    query: "data[?count < `1`].ID | [3:] "
+
+- debug:
+    msg: "{{ cvs_to_delete }}"
+
+- name: Delete the content views specified.
+  command: "hammer content-view version delete --id {{ item }} --content-view {{ cv.name }}  --organization {{ organization }}"
+  loop: "{{ cvs_to_delete }}"
+
