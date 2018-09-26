@@ -1,0 +1,23 @@
+--- 
+# Use hammer to refresh the facts on the discovered hosts 
+# Use a schedule in Tower.
+#
+
+- name: Get the list of discovered hosts
+  command: "hammer --output json discovery list"
+  register: cmdOutput
+
+- debug:
+    msg: "{{ cmdOutput.stdout }}"
+
+- set_fact: discoverylist={{ cmdOutput.stdout | from_json | json_query(query) }}
+  vars:
+    query: "[*].ID"
+
+- debug:
+    msg: "{{ discoverylist }}"
+
+- name: Refresh facts for the discovered hosts specified.
+  command: "hammer discovery refresh-facts --id {{ item }}"
+  loop: "{{ discoverylist }}"
+
