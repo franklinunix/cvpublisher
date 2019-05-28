@@ -7,6 +7,7 @@ base_soes:
   - name: "SOE_RHEL"
     environments: 
     - "Development"
+    - "QA"
 content_views: 
   - name: "OCP3x"
     environments: 
@@ -27,9 +28,6 @@ composite_content_views:
     - "Development"
     - "QA"
   - name: "SOE_CPGPC_OCP"
-    environments: 
-    - "Development"
-  - name: "SOE_Gluster"
     environments: 
     - "Development"
   - name: "SOE_mail"
