@@ -1,6 +1,36 @@
 ---
 # This playbook implements the task of updating each content view and composite content view
 
+
+#- name: "Update the filters for the content views that are not composite"
+#  katello_content_view_filter:
+#    server_url: {{ satellite_url }}
+#    username: {{ ansible_user }}
+#    password: {{ encrypted_password_from_vault }}
+#    validate_certs: true
+#    content_view: {{ cv.name }}
+#    organization: {{ cv.organization }}
+#    filter_state: present
+#    repositories: []
+#    rule_state: present
+#    filter_type: rpm                          # rpm, package_group, erratum, docker 
+#    rule_name: {{ cv.rule.name }}
+#    date_type: issued                         # issued or updated
+#    end_date: {{ ansible_date }}
+#    types: {{ cv.rule.types }}                # ["bugfix", "enhancement", "security"]
+#    inclusion: true
+
+# Filter the tags so that we find ones classified as base
+# Update their rules and republish
+
+# Get a list of content views that are not composite
+# Filter the tags so that we find ones classified as standard
+# Update their rules and republish
+
+# Get a list of content views that are composite
+# Update their rules and republish
+
+
 - name: "Update the filters for content_view and publish them"
   include_tasks: ErrataDateRuleUpdate.yml
   loop: "{{ content_views }}"
