@@ -20,9 +20,9 @@ content_views:
     - "Development"
     - "QA"
 composite_content_views: 
-#  - name: "SOE_Apache"
-#    environments: 
-#    - "Development"
+  - name: "SOE_Apache"
+    environments: 
+    - "Development"
   - name: "SOE_CPGPC"
     environments: 
     - "Development"
