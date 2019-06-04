@@ -30,6 +30,9 @@
 # Get a list of content views that are composite
 # Update their rules and republish
 
+- name: "Update the filters for base_oses and publish them"
+  include_tasks: ErrataDateRuleUpdate.yml
+  loop: "{{ base_soes }}"
 
 - name: "Update the filters for content_view and publish them"
   include_tasks: ErrataDateRuleUpdate.yml
